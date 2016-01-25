@@ -15,8 +15,7 @@ import com.newsagency.search.workflow.state.exception.StateLifeCycleExecutionExc
  * @param <T>
  * @param <E>
  */
-public class WorkFlowEngine<T extends WorkflowContext, E extends WorkflowRequest>
-		implements WorkflowEngineDef<T, E> {
+public class WorkFlowEngine<T extends WorkflowContext, E extends WorkflowRequest> implements WorkflowEngineDef<T, E> {
 
 	private E request = null;
 
@@ -31,8 +30,8 @@ public class WorkFlowEngine<T extends WorkflowContext, E extends WorkflowRequest
 	public void executeState(T ctxt, E request) throws StateExecutionException {
 		this.request = request;
 		@SuppressWarnings("unchecked")
-		Class<? extends WorkflowState<T, E>>[] states = (Class<? extends WorkflowState<T, E>>[]) request
-				.getClass().getAnnotation(States.class).states();
+		Class<? extends WorkflowState<T, E>>[] states = (Class<? extends WorkflowState<T, E>>[]) request.getClass()
+				.getAnnotation(States.class).states();
 		for (Class<? extends WorkflowState<T, E>> state : states) {
 			try {
 				executeStateLifeCycle(state);
@@ -43,8 +42,7 @@ public class WorkFlowEngine<T extends WorkflowContext, E extends WorkflowRequest
 		}
 	}
 
-	private void executeStateLifeCycle(
-			Class<? extends WorkflowState<T, E>> state)
+	private void executeStateLifeCycle(Class<? extends WorkflowState<T, E>> state)
 			throws StateLifeCycleExecutionException {
 		try {
 
@@ -73,9 +71,7 @@ public class WorkFlowEngine<T extends WorkflowContext, E extends WorkflowRequest
 
 	}
 
-	private void executeAfterState(
-			Class<? extends AfterState<T, E>>[] afterState)
-			throws AfterStateExecutionException {
+	private void executeAfterState(Class<? extends AfterState<T, E>>[] afterState) throws AfterStateExecutionException {
 		System.out.println("State Execution : After");
 		try {
 			for (Class<? extends AfterState<T, E>> state : afterState) {
@@ -92,8 +88,7 @@ public class WorkFlowEngine<T extends WorkflowContext, E extends WorkflowRequest
 
 	}
 
-	private void executeBeforeState(
-			Class<? extends BeforeState<T, E>>[] beforeState)
+	private void executeBeforeState(Class<? extends BeforeState<T, E>>[] beforeState)
 			throws BeforeStateExecutionException {
 		System.out.println("State Execution : Before");
 		try {
@@ -109,8 +104,7 @@ public class WorkFlowEngine<T extends WorkflowContext, E extends WorkflowRequest
 
 	}
 
-	private void executeState(Class<? extends WorkflowState<T, E>> state)
-			throws StateExecutionException {
+	private void executeState(Class<? extends WorkflowState<T, E>> state) throws StateExecutionException {
 		System.out.println("State Execution start");
 		try {
 			WorkflowState<T, E> newInstance = state.newInstance();

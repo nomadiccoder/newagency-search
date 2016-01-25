@@ -3,16 +3,20 @@
  */
 package com.newsagency.user.db.update;
 
-import com.newsagency.article.db.common.ArticleDBCRUDContext;
+import com.newsagency.user.db.common.UserDBCRUDContext;
 
 /**
  * @author bikash
  *
  */
-public class UserDBEntityUpdateContext extends ArticleDBCRUDContext {
+public class UserDBEntityUpdateContext extends UserDBCRUDContext {
 
-	/* (non-Javadoc)
-	 * @see com.newsagency.search.workflow.WorkflowContext#addParam(java.lang.String, java.lang.String)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * com.newsagency.search.workflow.WorkflowContext#addParam(java.lang.String,
+	 * java.lang.String)
 	 */
 	@Override
 	public void addParam(String key, String value) {
@@ -20,8 +24,12 @@ public class UserDBEntityUpdateContext extends ArticleDBCRUDContext {
 
 	}
 
-	/* (non-Javadoc)
-	 * @see com.newsagency.search.workflow.WorkflowContext#getParamValue(java.lang.String)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * com.newsagency.search.workflow.WorkflowContext#getParamValue(java.lang.
+	 * String)
 	 */
 	@Override
 	public String getParamValue(String key) {

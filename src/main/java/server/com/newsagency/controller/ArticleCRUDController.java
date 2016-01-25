@@ -26,12 +26,10 @@ import com.newsagency.service.url.ArticleCRUDRestURIConstants;
 @Controller
 public class ArticleCRUDController extends DefaultController {
 
-	private static final Logger logger = LoggerFactory
-			.getLogger(ArticleCRUDController.class);
+	private static final Logger logger = LoggerFactory.getLogger(ArticleCRUDController.class);
 
 	@RequestMapping(value = ArticleCRUDRestURIConstants.GET_ARTICLE_BY_ID, method = RequestMethod.GET)
-	public @ResponseBody Article getArticleById(
-			@PathVariable("id") String articleId) {
+	public @ResponseBody Article getArticleById(@PathVariable("id") String articleId) {
 		logger.info("get article by id : " + articleId);
 		return null;
 
@@ -52,8 +50,7 @@ public class ArticleCRUDController extends DefaultController {
 	}
 
 	@RequestMapping(value = ArticleCRUDRestURIConstants.UPDATE_ARTICLE, method = RequestMethod.POST)
-	public @ResponseBody Article updateArticle(@RequestBody Article article,
-			@PathVariable("id") long id) {
+	public @ResponseBody Article updateArticle(@RequestBody Article article, @PathVariable("id") long id) {
 		logger.info("update article : " + id);
 		return article;
 	}

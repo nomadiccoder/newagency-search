@@ -14,8 +14,8 @@ import com.newsagency.search.workflow.state.BeforeState;
  */
 @Retention(RetentionPolicy.RUNTIME)
 public @interface Before {
-	
+
 	@SuppressWarnings("rawtypes")
-	Class<? extends BeforeState> [] names();
+	Class<? extends BeforeState>[] names();
 
 }

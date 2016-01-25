@@ -8,16 +8,16 @@ package com.newsagency.search.workflow;
  *
  */
 public interface WorkflowContext {
-	
+
 	/**
 	 * @param key
 	 * @param value
 	 */
 	void addParam(String key, String value);
-	
+
 	/**
 	 * @param key
 	 */
 	String getParamValue(String key);
-	
+
 }

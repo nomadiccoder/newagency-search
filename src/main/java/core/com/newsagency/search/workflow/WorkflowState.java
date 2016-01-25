@@ -8,14 +8,13 @@ import com.newsagency.search.workflow.exception.WorkflowExecutionException;
  * @param <T>
  * @param <E>
  */
-public interface WorkflowState<T extends WorkflowContext,E extends WorkflowRequest> {
+public interface WorkflowState<T extends WorkflowContext, E extends WorkflowRequest> {
 
 	/**
 	 * @param ctxt
 	 * @param request
 	 * @throws WorkflowExecutionException
 	 */
-	public void execute(T ctxt, E request)
-			throws WorkflowExecutionException;
+	public void execute(T ctxt, E request) throws WorkflowExecutionException;
 
 }

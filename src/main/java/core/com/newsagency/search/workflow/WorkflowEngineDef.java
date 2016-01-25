@@ -22,7 +22,6 @@ public interface WorkflowEngineDef<T extends WorkflowContext, E extends Workflow
 	 * @param request
 	 * @throws StateExecutionException
 	 */
-	void executeState(T ctxt, E request)
-			throws StateExecutionException;
+	void executeState(T ctxt, E request) throws StateExecutionException;
 
 }

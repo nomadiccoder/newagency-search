@@ -9,16 +9,16 @@ package com.newsagency.controller.exception;
  */
 public class UserCRUDOperationException extends CRUDOperationException {
 
-	public UserCRUDOperationException(String message,Throwable cause) {
-		super(message,cause);
+	public UserCRUDOperationException(String message, Throwable cause) {
+		super(message, cause);
 	}
-	
+
 	public UserCRUDOperationException(String message) {
-		this(message,null);
+		this(message, null);
 	}
-	
+
 	public UserCRUDOperationException(Throwable cause) {
-		super(null,cause);
+		super(null, cause);
 	}
 
 	/**

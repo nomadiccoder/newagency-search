@@ -9,16 +9,16 @@ package com.newsagency.controller.exception;
  */
 public class ArticleIndexOperationException extends CRUDOperationException {
 
-	public ArticleIndexOperationException(String message,Throwable cause) {
-		super(message,cause);
+	public ArticleIndexOperationException(String message, Throwable cause) {
+		super(message, cause);
 	}
-	
+
 	public ArticleIndexOperationException(String message) {
-		this(message,null);
+		this(message, null);
 	}
-	
+
 	public ArticleIndexOperationException(Throwable cause) {
-		super(null,cause);
+		super(null, cause);
 	}
 
 	/**

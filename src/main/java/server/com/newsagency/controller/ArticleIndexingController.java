@@ -23,12 +23,12 @@ import com.newsagency.service.url.ArticleIndexingURIConstants;
  */
 @Controller
 public class ArticleIndexingController extends DefaultController {
-	
+
 	private static final Logger logger = LoggerFactory.getLogger(ArticleIndexingController.class);
-	
-	@RequestMapping(value=ArticleIndexingURIConstants.INDEX_CREATE_ARTICLE,method=RequestMethod.POST)
-	public void createIndexByArticleId(@PathVariable("id") long articleId){
-		logger.info("Received create index request for article :: "+articleId);
+
+	@RequestMapping(value = ArticleIndexingURIConstants.INDEX_CREATE_ARTICLE, method = RequestMethod.POST)
+	public void createIndexByArticleId(@PathVariable("id") long articleId) {
+		logger.info("Received create index request for article :: " + articleId);
 		ArticleIndexCreationRequest creationRequest = new ArticleIndexCreationRequest();
 		WorkFlowEngine<ArticleIndexCreationContext, ArticleIndexCreationRequest> engine = new WorkFlowEngine<ArticleIndexCreationContext, ArticleIndexCreationRequest>();
 		ArticleIndexCreationContext ctxt = new ArticleIndexCreationContext();
@@ -41,20 +41,20 @@ public class ArticleIndexingController extends DefaultController {
 			e.printStackTrace();
 		}
 	}
-	
-	@RequestMapping(value=ArticleIndexingURIConstants.INDEX_BULK_ARTICLES,method=RequestMethod.POST)
-	public void performBulkIndexing(@PathVariable("id") long articleId){
-		logger.info("Received bulk index request for articles :: "+articleId);
+
+	@RequestMapping(value = ArticleIndexingURIConstants.INDEX_BULK_ARTICLES, method = RequestMethod.POST)
+	public void performBulkIndexing(@PathVariable("id") long articleId) {
+		logger.info("Received bulk index request for articles :: " + articleId);
 	}
-	
-	@RequestMapping(value=ArticleIndexingURIConstants.INDEX_DELETE_ARTICLE,method=RequestMethod.POST)
-	public void deleteIndexByArticleId(@PathVariable("id") long articleId){
-		logger.info("Received delete index request for article :: "+articleId);
+
+	@RequestMapping(value = ArticleIndexingURIConstants.INDEX_DELETE_ARTICLE, method = RequestMethod.POST)
+	public void deleteIndexByArticleId(@PathVariable("id") long articleId) {
+		logger.info("Received delete index request for article :: " + articleId);
 	}
-	
-	@RequestMapping(value=ArticleIndexingURIConstants.INDEX_UPDATE_ARTICLE,method=RequestMethod.POST)
-	public void updateIndexByArticleId(@PathVariable("id") long articleId){
-		logger.info("Received update index request for article :: "+articleId);
+
+	@RequestMapping(value = ArticleIndexingURIConstants.INDEX_UPDATE_ARTICLE, method = RequestMethod.POST)
+	public void updateIndexByArticleId(@PathVariable("id") long articleId) {
+		logger.info("Received update index request for article :: " + articleId);
 	}
-	
+
 }

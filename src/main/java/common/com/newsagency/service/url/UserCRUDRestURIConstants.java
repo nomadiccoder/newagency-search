@@ -5,7 +5,7 @@ package com.newsagency.service.url;
  *
  */
 public interface UserCRUDRestURIConstants {
-	
+
 	String GET_USER_BY_ID = "/rest/user/{id}";
 	String GET_ALL_USER = "/rest/users";
 	String CREATE_USER = "/rest/user/create";

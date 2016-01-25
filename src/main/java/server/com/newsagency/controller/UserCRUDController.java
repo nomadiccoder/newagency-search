@@ -26,13 +26,10 @@ import com.newsagency.service.url.UserCRUDRestURIConstants;
 @Controller
 public class UserCRUDController extends DefaultController {
 
-
-	private static final Logger logger = LoggerFactory
-			.getLogger(UserCRUDController.class);
+	private static final Logger logger = LoggerFactory.getLogger(UserCRUDController.class);
 
 	@RequestMapping(value = UserCRUDRestURIConstants.GET_USER_BY_ID, method = RequestMethod.GET)
-	public @ResponseBody User getUserById(
-			@PathVariable("id") String userId) {
+	public @ResponseBody User getUserById(@PathVariable("id") String userId) {
 		logger.info("get user by id : " + userId);
 		return null;
 
@@ -53,8 +50,7 @@ public class UserCRUDController extends DefaultController {
 	}
 
 	@RequestMapping(value = UserCRUDRestURIConstants.UPDATE_USER, method = RequestMethod.POST)
-	public @ResponseBody User updateUser(@RequestBody User user,
-			@PathVariable("id") long id) {
+	public @ResponseBody User updateUser(@RequestBody User user, @PathVariable("id") long id) {
 		logger.info("update user : " + id);
 		return user;
 	}
@@ -62,6 +58,5 @@ public class UserCRUDController extends DefaultController {
 	@RequestMapping(value = UserCRUDRestURIConstants.DELETLE_USER, method = RequestMethod.DELETE)
 	public @ResponseBody void deleteUserById(@PathVariable("id") long id) {
 	}
-
 
 }

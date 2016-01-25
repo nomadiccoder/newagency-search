@@ -3,8 +3,6 @@
  */
 package com.newsagency.search.workflow;
 
-
-
 /**
  * @author bikash
  *

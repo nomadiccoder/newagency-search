@@ -1,6 +1,5 @@
 package com.newsagency.search.workflow.exception;
 
-
 /**
  * @author bikash
  *

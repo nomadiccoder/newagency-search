@@ -8,7 +8,7 @@ package com.newsagency.service.url;
  *
  */
 public interface ArticleCRUDRestURIConstants {
-	
+
 	String GET_ARTICLE_BY_ID = "/rest/article/{id}";
 	String GET_ALL_ARTICLES = "/rest/articles";
 	String CREATE_ARTICLE = "/rest/article/create";

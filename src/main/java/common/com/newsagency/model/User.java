@@ -14,8 +14,8 @@ import javax.persistence.Table;
  *
  */
 @Entity
-@Table(name="user")
-public class User implements Serializable{
+@Table(name = "user")
+public class User implements Serializable {
 
 	/**
 	 * 
@@ -23,8 +23,8 @@ public class User implements Serializable{
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@Column(name="id",nullable=false,unique=true)
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name = "id", nullable = false, unique = true)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
 	public Long getId() {

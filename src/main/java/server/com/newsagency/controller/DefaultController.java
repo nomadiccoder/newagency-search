@@ -12,8 +12,9 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 public abstract class DefaultController {
 
 	protected ClassPathXmlApplicationContext context;
+
 	public DefaultController() {
-		if(context == null){
+		if (context == null) {
 			context = new ClassPathXmlApplicationContext("spring.xml");
 		}
 	}

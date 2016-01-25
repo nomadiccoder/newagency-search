@@ -3,6 +3,9 @@
  */
 package com.newsagency.user.db.common;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import com.newsagency.search.workflow.WorkflowState;
 import com.newsagency.search.workflow.exception.WorkflowExecutionException;
 
@@ -11,6 +14,8 @@ import com.newsagency.search.workflow.exception.WorkflowExecutionException;
  *
  */
 public class FinalizationState implements WorkflowState<UserDBCRUDContext, UserDBCRUDRequest> {
+	
+	private static final Logger logger = LoggerFactory.getLogger(FinalizationState.class);
 
 	/*
 	 * (non-Javadoc)

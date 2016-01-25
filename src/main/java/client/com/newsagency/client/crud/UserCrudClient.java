@@ -17,7 +17,7 @@ public class UserCrudClient {
 		RestTemplate restTemplate = new RestTemplate();
 		try {
 
-			restTemplate.getForObject("http://localhost:8080/controller" + "/rest/user/" + 1, User.class);
+			restTemplate.postForEntity("http://localhost:8080/controller" + "/rest/article/index/" + 1,null, User.class);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

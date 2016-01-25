@@ -11,7 +11,7 @@
 	</appender>
 	
 	<!-- Application Loggers -->
-	<logger name="com.newsagency.controller">
+	<logger name="com.newsagency">
 		<level value="info" />
 	</logger>
 	

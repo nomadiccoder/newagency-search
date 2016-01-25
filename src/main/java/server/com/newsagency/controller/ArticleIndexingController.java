@@ -10,7 +10,11 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.newsagency.article.index.create.ArticleIndexCreationContext;
 import com.newsagency.article.index.create.ArticleIndexCreationRequest;
+import com.newsagency.search.workflow.WorkFlowEngine;
+import com.newsagency.search.workflow.exception.StateExecutionException;
+import com.newsagency.search.workflow.exception.WorkflowInitializationException;
 import com.newsagency.service.url.ArticleIndexingURIConstants;
 
 /**
@@ -26,6 +30,16 @@ public class ArticleIndexingController extends DefaultController {
 	public void createIndexByArticleId(@PathVariable("id") long articleId){
 		logger.info("Received create index request for article :: "+articleId);
 		ArticleIndexCreationRequest creationRequest = new ArticleIndexCreationRequest();
+		WorkFlowEngine<ArticleIndexCreationContext, ArticleIndexCreationRequest> engine = new WorkFlowEngine<ArticleIndexCreationContext, ArticleIndexCreationRequest>();
+		ArticleIndexCreationContext ctxt = new ArticleIndexCreationContext();
+		try {
+			engine.initialize(ctxt);
+			engine.executeState(ctxt, creationRequest);
+		} catch (StateExecutionException e) {
+			e.printStackTrace();
+		} catch (WorkflowInitializationException e) {
+			e.printStackTrace();
+		}
 	}
 	
 	@RequestMapping(value=ArticleIndexingURIConstants.INDEX_BULK_ARTICLES,method=RequestMethod.POST)

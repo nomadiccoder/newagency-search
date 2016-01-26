@@ -25,7 +25,13 @@
 		<project.build.finalName>newsearch</project.build.finalName>
 	</properties>
 	<dependencies>
-		<!--  SolrJ -->
+		<!-- ROME Feed reader -->
+		<dependency>
+			<groupId>rome</groupId>
+			<artifactId>rome</artifactId>
+			<version>1.0</version>
+		</dependency>
+		<!-- SolrJ -->
 		<dependency>
 			<groupId>org.apache.solr</groupId>
 			<artifactId>solr-solrj</artifactId>

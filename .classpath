@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
 	<classpathentry including="**/*.java" kind="src" path="src/main/resources"/>
-	<classpathentry excluding="index/|db/" kind="src" path="src/main/java/server"/>
+	<classpathentry excluding="index/|db/|feeder/" kind="src" path="src/main/java/server"/>
 	<classpathentry kind="src" path="src/main/java/common"/>
 	<classpathentry kind="src" path="src/main/java/client"/>
 	<classpathentry kind="src" output="target/test-classes" path="src/test/java">
@@ -14,6 +14,7 @@
 	<classpathentry kind="src" path="src/main/java/core"/>
 	<classpathentry kind="src" path="src/main/java/server/index"/>
 	<classpathentry kind="src" path="src/main/java/server/db"/>
+	<classpathentry kind="src" path="src/main/java/server/feeder"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.6">
 		<attributes>
 			<attribute name="maven.pomderived" value="true"/>

@@ -39,7 +39,7 @@ public class ArticleIndexingController extends DefaultController {
 			e.printStackTrace();
 		} catch (WorkflowInitializationException e) {
 			e.printStackTrace();
-		}
+		}	
 	}
 
 	@RequestMapping(value = ArticleIndexingURIConstants.INDEX_BULK_ARTICLES, method = RequestMethod.POST)

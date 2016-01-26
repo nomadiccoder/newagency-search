@@ -10,5 +10,15 @@ import com.newsagency.search.workflow.WorkflowRequest;
  *
  */
 public class ArticleDBCRUDRequest implements WorkflowRequest {
+	
+	private Long articleId;
+
+	public Long getArticleId() {
+		return articleId;
+	}
+
+	public void setArticleId(Long articleId) {
+		this.articleId = articleId;
+	}
 
 }

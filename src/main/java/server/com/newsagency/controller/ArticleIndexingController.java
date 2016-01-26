@@ -30,6 +30,7 @@ public class ArticleIndexingController extends DefaultController {
 	public void createIndexByArticleId(@PathVariable("id") long articleId) {
 		logger.info("Received create index request for article :: " + articleId);
 		ArticleIndexCreationRequest creationRequest = new ArticleIndexCreationRequest();
+		creationRequest.setArticleId(articleId);
 		WorkFlowEngine<ArticleIndexCreationContext, ArticleIndexCreationRequest> engine = new WorkFlowEngine<ArticleIndexCreationContext, ArticleIndexCreationRequest>();
 		ArticleIndexCreationContext ctxt = new ArticleIndexCreationContext();
 		try {

@@ -3,6 +3,9 @@
  */
 package com.newsagency.article.index.common;
 
+import org.apache.solr.client.solrj.SolrClient;
+
+import com.newsagency.model.Article;
 import com.newsagency.search.workflow.WorkflowContext;
 
 /**
@@ -11,6 +14,9 @@ import com.newsagency.search.workflow.WorkflowContext;
  */
 public class ArticleIndexCRUDContext implements WorkflowContext {
 
+	private Article article;
+	
+	private SolrClient client;
 	/*
 	 * (non-Javadoc)
 	 * 
@@ -36,5 +42,22 @@ public class ArticleIndexCRUDContext implements WorkflowContext {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	public Article getArticle() {
+		return article;
+	}
+
+	public void setArticle(Article article) {
+		this.article = article;
+	}
+
+	public SolrClient getClient() {
+		return client;
+	}
+
+	public void setClient(SolrClient client) {
+		this.client = client;
+	}
+	
 
 }

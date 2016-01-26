@@ -6,6 +6,7 @@ package com.newsagency.article.db.create;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.newsagency.dao.ArticleDAO;
 import com.newsagency.search.workflow.WorkflowState;
 import com.newsagency.search.workflow.exception.WorkflowExecutionException;
 
@@ -28,7 +29,14 @@ public class ArticleDBEntityCreationState
 	@Override
 	public void execute(ArticleDBEntityCreationContext ctxt, ArticleDBEntityCreationRequest request)
 			throws WorkflowExecutionException {
-		logger.info("Executing State");
+		try {
+			logger.info("Executing State");
+			ArticleDAO articleDAO = ctxt.getArticleDAO();
+			articleDAO.save(request.getArticle());
+		} catch (Exception e) {
+			throw new WorkflowExecutionException(e);
+		}
+		
 	}
 
 }

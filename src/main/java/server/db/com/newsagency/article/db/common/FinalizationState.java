@@ -3,6 +3,9 @@
  */
 package com.newsagency.article.db.common;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import com.newsagency.search.workflow.WorkflowState;
 import com.newsagency.search.workflow.exception.WorkflowExecutionException;
 
@@ -11,6 +14,8 @@ import com.newsagency.search.workflow.exception.WorkflowExecutionException;
  *
  */
 public class FinalizationState implements WorkflowState<ArticleDBCRUDContext, ArticleDBCRUDRequest> {
+	
+	private static final Logger logger = LoggerFactory.getLogger(FinalizationState.class);
 
 	/*
 	 * (non-Javadoc)
@@ -21,8 +26,8 @@ public class FinalizationState implements WorkflowState<ArticleDBCRUDContext, Ar
 	 */
 	@Override
 	public void execute(ArticleDBCRUDContext ctxt, ArticleDBCRUDRequest request) throws WorkflowExecutionException {
-		// TODO Auto-generated method stub
-
+		logger.info("Executing state");
+		ctxt.setArticleDAO(null);
 	}
 
 }

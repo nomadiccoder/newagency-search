@@ -3,6 +3,9 @@
  */
 package com.newsagency.article.db.common;
 
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+import com.newsagency.dao.ArticleDAO;
 import com.newsagency.search.workflow.WorkflowContext;
 
 /**
@@ -10,6 +13,10 @@ import com.newsagency.search.workflow.WorkflowContext;
  *
  */
 public class ArticleDBCRUDContext implements WorkflowContext {
+	
+	private ClassPathXmlApplicationContext springContext;
+	
+	private ArticleDAO articleDAO;
 
 	/*
 	 * (non-Javadoc)
@@ -37,4 +44,20 @@ public class ArticleDBCRUDContext implements WorkflowContext {
 		return null;
 	}
 
+	public ClassPathXmlApplicationContext getSpringContext() {
+		return springContext;
+	}
+
+	public void setSpringContext(ClassPathXmlApplicationContext springContext) {
+		this.springContext = springContext;
+	}
+
+	public ArticleDAO getArticleDAO() {
+		return articleDAO;
+	}
+
+	public void setArticleDAO(ArticleDAO articleDAO) {
+		this.articleDAO = articleDAO;
+	}
+	
 }

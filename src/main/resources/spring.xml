@@ -10,8 +10,8 @@
 		destroy-method="close">
 		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
 		<property name="url" value="jdbc:mysql://localhost:3306/newsagency" />
-		<property name="username" value="agencyuser" />
-		<property name="password" value="agencyuser" />
+		<property name="username" value="newsagency-user" />
+		<property name="password" value="newsagency" />
 	</bean>
 
 
@@ -19,12 +19,12 @@
 	<bean id="hibernate4AnnotatedSessionFactory"
 		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
 		<property name="dataSource" ref="dataSource" />
-		<!-- <property name="annotatedClasses">
+		<property name="annotatedClasses">
 			<list>
-				<value>com.newsagency.model.User</value>
+				<!-- <value>com.newsagency.model.User</value> -->
 				<value>com.newsagency.model.Article</value>
 			</list>
-		</property> -->
+		</property>
 		<property name="hibernateProperties">
 			<props>
 				<prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
@@ -37,10 +37,10 @@
 
 	<!-- <bean id="userDao" class="com.newsagency.dao.impl.UserDAOImpl">
 		<property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
-	</bean>
+	</bean> -->
 	<bean id="articleDao" class="com.newsagency.dao.impl.ArticleDAOImpl">
 		<property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
-	</bean> -->
+	</bean>
 	<tx:annotation-driven transaction-manager="transactionManager"/>
      
     <bean id="transactionManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager">

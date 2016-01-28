@@ -10,6 +10,7 @@
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/java/server/db"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/java/server"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/java/server/feeder"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/java/server/search"/>
 		<property name="java-output-path" value="target/classes"/>
         <property name="context-root" value="controller"/>
 	</wb-module>

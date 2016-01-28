@@ -3,11 +3,11 @@
  */
 package com.newsagency.article.db.read;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.newsagency.dao.ArticleDAO;
 import com.newsagency.model.Article;
@@ -35,8 +35,16 @@ public class ArticleDBEntityFetchState
 			throws WorkflowExecutionException {
 		logger.info("Executing State");
 		ArticleDAO articleDAO = ctxt.getArticleDAO();
-		List<Article> allArticles = articleDAO.fetchAll();
-		ctxt.setArticles(allArticles);
+		Long articleId = request.getArticleId();
+		if(articleId != null){
+			Article article = articleDAO.fetchById(articleId);
+			ArrayList<Article> articles = new ArrayList<Article>();
+			articles.add(article);
+			ctxt.setArticles(articles);
+		}else{
+			List<Article> allArticles = articleDAO.fetchAll();
+			ctxt.setArticles(allArticles);
+		}
 	}
 
 }

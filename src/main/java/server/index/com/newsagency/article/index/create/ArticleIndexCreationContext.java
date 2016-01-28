@@ -4,6 +4,7 @@
 package com.newsagency.article.index.create;
 
 import org.apache.solr.common.SolrInputDocument;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.newsagency.article.index.common.ArticleIndexCRUDContext;
 
@@ -14,7 +15,9 @@ import com.newsagency.article.index.common.ArticleIndexCRUDContext;
 public class ArticleIndexCreationContext extends ArticleIndexCRUDContext {
 	
 	private SolrInputDocument document;
-
+	
+	private ClassPathXmlApplicationContext springContext = null;
+	
 	@Override
 	public void addParam(String key, String value) {
 
@@ -33,4 +36,11 @@ public class ArticleIndexCreationContext extends ArticleIndexCRUDContext {
 		this.document = document;
 	}
 
+	public ClassPathXmlApplicationContext getSpringContext() {
+		return springContext;
+	}
+
+	public void setSpringContext(ClassPathXmlApplicationContext springContext) {
+		this.springContext = springContext;
+	}
 }

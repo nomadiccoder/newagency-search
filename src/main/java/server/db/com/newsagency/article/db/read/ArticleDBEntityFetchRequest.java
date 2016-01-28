@@ -14,5 +14,15 @@ import com.newsagency.search.workflow.States;
  */
 @States(states={DBInitializationState.class,ArticleDBEntityFetchState.class,FinalizationState.class})
 public class ArticleDBEntityFetchRequest extends ArticleDBCRUDRequest {
+	
+	private Long articleId;
 
+	public Long getArticleId() {
+		return articleId;
+	}
+
+	public void setArticleId(Long articleId) {
+		this.articleId = articleId;
+	}
+	
 }

@@ -34,6 +34,7 @@ public class ArticleIndexingController extends DefaultController {
 		WorkFlowEngine<ArticleIndexCreationContext, ArticleIndexCreationRequest> engine = new WorkFlowEngine<ArticleIndexCreationContext, ArticleIndexCreationRequest>();
 		ArticleIndexCreationContext ctxt = new ArticleIndexCreationContext();
 		try {
+			ctxt.setSpringContext(context);
 			engine.initialize(ctxt);
 			engine.executeState(ctxt, creationRequest);
 		} catch (StateExecutionException e) {

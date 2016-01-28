@@ -17,7 +17,7 @@ public interface ArticleDAO {
 
 	public List<Article> fetchAll();
 
-	public Article fetchById(String id);
+	public Article fetchById(long id);
 
 	public boolean delete(long id);
 

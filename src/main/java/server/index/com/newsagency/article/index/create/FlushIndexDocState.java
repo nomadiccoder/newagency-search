@@ -5,8 +5,8 @@ package com.newsagency.article.index.create;
 
 import java.io.IOException;
 
-import org.apache.solr.client.solrj.SolrClient;
 import org.apache.solr.client.solrj.SolrServerException;
+import org.apache.solr.client.solrj.impl.CloudSolrClient;
 import org.apache.solr.common.SolrInputDocument;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -26,9 +26,10 @@ public class FlushIndexDocState implements WorkflowState<ArticleIndexCreationCon
 	public void execute(ArticleIndexCreationContext ctxt, ArticleIndexCreationRequest request)
 			throws WorkflowExecutionException {
 		logger.info("Executing state");
-		SolrClient client = ctxt.getClient();
+		CloudSolrClient client = ctxt.getClient();
 		SolrInputDocument document = ctxt.getDocument();
 		try {
+			client.setDefaultCollection("articlecoll");
 			client.add(document);
 			client.commit();
 		} catch (SolrServerException e) {

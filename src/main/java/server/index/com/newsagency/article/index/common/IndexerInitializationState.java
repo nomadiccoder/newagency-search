@@ -3,7 +3,6 @@
  */
 package com.newsagency.article.index.common;
 
-import org.apache.solr.client.solrj.SolrClient;
 import org.apache.solr.client.solrj.impl.CloudSolrClient;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -24,7 +23,7 @@ public class IndexerInitializationState implements WorkflowState<ArticleIndexCRU
 	public void execute(ArticleIndexCRUDContext ctxt, ArticleIndexCRUDRequest request)
 			throws WorkflowExecutionException {
 		logger.info("Executing state");
-		SolrClient client = new CloudSolrClient("localhost:2181");
+		CloudSolrClient client = new CloudSolrClient("localhost:2181");
 		ctxt.setClient(client);
 	}
 

@@ -17,6 +17,7 @@ import com.newsagency.search.workflow.WorkflowRequest;
 import com.newsagency.search.workflow.WorkflowState;
 import com.newsagency.search.workflow.exception.StateExecutionException;
 import com.newsagency.search.workflow.exception.WorkflowExecutionException;
+import com.newsagency.search.workflow.exception.WorkflowInitializationException;
 
 /**
  * @author bikash
@@ -44,14 +45,18 @@ public class ArticleInformationRetrievalState
 		ArticleDBEntityFetchRequest fetchRequest = new ArticleDBEntityFetchRequest();
 		ArticleDBEntityFetchContext fetchContext = new ArticleDBEntityFetchContext();
 		fetchRequest.setArticleId(articleId);
+		fetchContext.setSpringContext(context.getSpringContext());
 		WorkFlowEngine<WorkflowContext,WorkflowRequest> engine = new WorkFlowEngine<WorkflowContext, WorkflowRequest>();
 		try {
+			engine.initialize(fetchContext);
 			engine.executeState(fetchContext, fetchRequest);
 			List<Article> articles = fetchContext.getArticles();
 			if(articles != null && !articles.isEmpty()){
 				return articles.get(0);
 			}
 		} catch (StateExecutionException e) {
+			e.printStackTrace();
+		} catch (WorkflowInitializationException e) {
 			e.printStackTrace();
 		}
 		return null;

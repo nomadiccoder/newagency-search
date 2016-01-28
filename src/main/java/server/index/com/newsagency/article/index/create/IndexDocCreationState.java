@@ -26,16 +26,17 @@ public class IndexDocCreationState implements WorkflowState<ArticleIndexCreation
 			throws WorkflowExecutionException {
 		logger.info("Executing state");
 		this.context = ctxt;
-		SolrInputDocument document = new SolrInputDocument();
 		Article article = ctxt.getArticle();
-		document.addField("author", article.getAuthor());
-		document.addField("title", article.getTitle());
-		document.addField("publicationDate", article.getPublicationDate());
-		document.addField("category", article.getCategory());
-		document.addField("description", article.getDescription());
-		document.addField("link", article.getLinkUri());
-		document.addField("fullContentUri", article.getFullContentUri());
-		context.setDocument(document);
+		SolrInputDocument inputDoc = new SolrInputDocument();
+		inputDoc.addField("id", article.getId());
+		inputDoc.addField("author", article.getAuthor());
+		inputDoc.addField("title", article.getTitle());
+		inputDoc.addField("publicationDate", article.getPublicationDate());
+		inputDoc.addField("category", article.getCategory());
+		inputDoc.addField("description", article.getDescription());
+		inputDoc.addField("link", article.getLinkUri());
+		inputDoc.addField("fullContentUri", article.getFullContentUri());
+		context.setDocument(inputDoc);
 	}
 
 }

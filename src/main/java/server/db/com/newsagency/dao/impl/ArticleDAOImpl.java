@@ -56,7 +56,7 @@ public class ArticleDAOImpl extends AbstractDAO implements ArticleDAO {
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public Article fetchById(String id) {
+	public Article fetchById(long id) {
 		logger.info("find article by article id : " + id);
 		try {
 			beginTransacation();

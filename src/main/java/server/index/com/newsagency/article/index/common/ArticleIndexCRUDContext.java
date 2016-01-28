@@ -4,6 +4,8 @@
 package com.newsagency.article.index.common;
 
 import org.apache.solr.client.solrj.SolrClient;
+import org.apache.solr.client.solrj.impl.CloudSolrClient;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.newsagency.model.Article;
 import com.newsagency.search.workflow.WorkflowContext;
@@ -16,7 +18,9 @@ public class ArticleIndexCRUDContext implements WorkflowContext {
 
 	private Article article;
 	
-	private SolrClient client;
+	private CloudSolrClient client;
+	
+	private ClassPathXmlApplicationContext springContext;
 	/*
 	 * (non-Javadoc)
 	 * 
@@ -51,12 +55,20 @@ public class ArticleIndexCRUDContext implements WorkflowContext {
 		this.article = article;
 	}
 
-	public SolrClient getClient() {
+	public CloudSolrClient getClient() {
 		return client;
 	}
 
-	public void setClient(SolrClient client) {
+	public void setClient(CloudSolrClient client) {
 		this.client = client;
+	}
+
+	public ClassPathXmlApplicationContext getSpringContext() {
+		return springContext;
+	}
+
+	public void setSpringContext(ClassPathXmlApplicationContext springContext) {
+		this.springContext = springContext;
 	}
 	
 

@@ -5,6 +5,7 @@ package com.newsagency.client.crud;
 
 import org.springframework.web.client.RestTemplate;
 
+import com.newsagency.article.search.common.ArticleSearchResponseWrapper;
 import com.newsagency.model.User;
 
 /**
@@ -17,8 +18,8 @@ public class UserCrudClient {
 		RestTemplate restTemplate = new RestTemplate();
 		try {
 
-			restTemplate.postForEntity("http://localhost:8080/controller" + "/rest/article/index/" + 1, null,
-					User.class);
+			restTemplate.getForEntity("http://localhost:8080/controller" + "/rest/search/article/stinson", null,
+					ArticleSearchResponseWrapper.class);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

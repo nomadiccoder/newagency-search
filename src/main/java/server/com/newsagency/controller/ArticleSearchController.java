@@ -3,7 +3,7 @@
  */
 package com.newsagency.controller;
 
-import javax.transaction.Transactional;
+import java.util.List;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -32,10 +32,10 @@ public class ArticleSearchController extends DefaultController {
 
 	private static final Logger logger = LoggerFactory.getLogger(ArticleSearchController.class);
 
-	@Transactional
 	@RequestMapping(value = ArticleSearchURIConstants.SEARCH_ARTICLE, method = RequestMethod.GET)
 	public @ResponseBody ArticleSearchResponseWrapper search(@PathVariable("query") String queryString) {
 		logger.info("Executing search for query " + queryString);
+		List<String> str = null;
 		WorkFlowEngine<ArticleSearchContext, ArticleSearchRequest> engine = new WorkFlowEngine<ArticleSearchContext, ArticleSearchRequest>();
 		ArticleSearchResponseWrapper wrapper = null;
 		ArticleSearchExecutionContext ctxt = new ArticleSearchExecutionContext();

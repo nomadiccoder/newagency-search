@@ -17,7 +17,7 @@ import com.newsagency.search.workflow.exception.WorkflowExecutionException;
  */
 public class IndexerInitializationState implements WorkflowState<ArticleIndexCRUDContext, ArticleIndexCRUDRequest> {
 
-	private static final Logger logger = LoggerFactory.getLogger(IndexDocCreationState.class);
+	private static final Logger logger = LoggerFactory.getLogger(IndexerInitializationState.class);
 
 	@Override
 	public void execute(ArticleIndexCRUDContext ctxt, ArticleIndexCRUDRequest request)

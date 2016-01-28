@@ -47,7 +47,6 @@ public class ArticleSearchExecutionState
 		Map<String, String> map = prepareParamMap(query);
 		try {
 			QueryResponse response = client.query(new MapSolrParams(map));
-			logger.info("Query Response : "+response.toString());
 			context.setSearchResponse(response);
 		} catch (SolrServerException e) {
 			e.printStackTrace();

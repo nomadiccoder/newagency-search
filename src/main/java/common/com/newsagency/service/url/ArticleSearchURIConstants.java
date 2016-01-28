@@ -9,6 +9,6 @@ package com.newsagency.service.url;
  */
 public interface ArticleSearchURIConstants {
 	
-	String SEARCH_ARTICLE = "/rest/article/search/{queryString}";
+	String SEARCH_ARTICLE = "/rest/search/article/{query}";
 
 }

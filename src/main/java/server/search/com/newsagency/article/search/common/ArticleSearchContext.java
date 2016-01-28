@@ -32,6 +32,8 @@ public class ArticleSearchContext implements WorkflowContext{
 	private SolrQuery query;
 	
 	private QueryResponse searchResponse;
+	
+	private ArticleSearchResponseWrapper wrapper;
 
 	public CloudSolrClient getClient() {
 		return client;
@@ -55,6 +57,14 @@ public class ArticleSearchContext implements WorkflowContext{
 
 	public void setSearchResponse(QueryResponse searchResponse) {
 		this.searchResponse = searchResponse;
+	}
+
+	public ArticleSearchResponseWrapper getWrapper() {
+		return wrapper;
+	}
+
+	public void setWrapper(ArticleSearchResponseWrapper wrapper) {
+		this.wrapper = wrapper;
 	}
 
 }

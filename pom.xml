@@ -236,8 +236,73 @@
 				</configuration>
 			</plugin>
 			<plugin>
-				<groupId>org.apache.maven.archetypes</groupId>
-				<artifactId>maven-archetype-webapp</artifactId>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>sql-maven-plugin</artifactId>
+				<!-- JDBC Driver -->
+				<dependencies>
+					<dependency>
+						<groupId>mysql</groupId>
+						<artifactId>mysql-connector-java</artifactId>
+						<version>5.0.5</version>
+					</dependency>
+				</dependencies>
+
+				<configuration>
+					<driver>com.mysql.jdbc.Driver</driver>
+					<url>jdbc:mysql://localhost:3306/test</url>
+					<username>root</username>
+					<password></password>
+					<autocommit>true</autocommit>
+					<onError>continue</onError>
+					<srcFiles>
+						<srcFile>src/main/resources/sql-scripts/newsagency-setup.sql</srcFile>
+					</srcFiles>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>exec-maven-plugin</artifactId>
+				<configuration>
+					<mainClass>com.newsagency.rss.feed.RSSFeedReader</mainClass>
+				</configuration>
+			</plugin>
+
+			<!-- Node JS plugin -->
+			<plugin>
+				<groupId>com.github.eirslett</groupId>
+				<artifactId>frontend-maven-plugin</artifactId>
+				<version>0.0.27</version>
+				<configuration>
+					<installDirectory>frontend-target</installDirectory>
+				</configuration>
+				<executions>
+					<execution>
+						<id>install node and npm</id>
+						<goals>
+							<goal>install-node-and-npm</goal>
+						</goals>
+						<configuration>
+							<nodeVersion>v0.12.7</nodeVersion>
+							<npmVersion>2.13.0</npmVersion>
+						</configuration>
+					</execution>
+					<execution>
+						<id>npm install</id>
+						<goals>
+							<goal>npm</goal>
+						</goals>
+						<configuration>
+							<arguments>install</arguments>
+						</configuration>
+					</execution>
+					<execution>
+						<id>gulp build</id>
+						<goals>
+							<goal>gulp</goal>
+						</goals>
+					</execution>
+				</executions>
 			</plugin>
 		</plugins>
 	</build>

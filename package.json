@@ -1,0 +1,33 @@
+{
+  "name": "news-publishing",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "gulp": "gulp"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "browserify": "^13.0.0",
+    "gulp": "^3.9.0",
+    "gulp-concat": "^2.6.0",
+    "gulp-connect": "^2.3.1",
+    "gulp-eslint": "^1.1.1",
+    "gulp-open": "^1.0.0",
+    "reactify": "^1.1.1",
+    "vinyl-source-stream": "^1.1.0"
+  },
+  "dependencies": {
+    "bootstrap": "^3.3.6",
+    "flux": "^2.0.3",
+    "history": "^1.17.0",
+    "jquery": "^2.2.0",
+    "lodash": "^4.0.0",
+    "object-assign": "^4.0.1",
+    "react": "^0.13.3",
+    "react-router": "^0.13.3",
+    "toastr": "^2.1.2"
+  }
+}

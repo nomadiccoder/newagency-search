@@ -5,6 +5,7 @@ package com.newsagency.controller;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,12 +26,16 @@ import com.newsagency.service.url.ArticleIndexingURIConstants;
 public class ArticleIndexingController extends DefaultController {
 
 	private static final Logger logger = LoggerFactory.getLogger(ArticleIndexingController.class);
+	
+	@Value("defaultcollection")
+	private String defaultCollection;
 
 	@RequestMapping(value = ArticleIndexingURIConstants.INDEX_CREATE_ARTICLE, method = RequestMethod.POST)
 	public void createIndexByArticleId(@PathVariable("id") long articleId) {
 		logger.info("Received create index request for article :: " + articleId);
 		ArticleIndexCreationRequest creationRequest = new ArticleIndexCreationRequest();
 		creationRequest.setArticleId(articleId);
+		creationRequest.setDefaultCollection(defaultCollection);
 		WorkFlowEngine<ArticleIndexCreationContext, ArticleIndexCreationRequest> engine = new WorkFlowEngine<ArticleIndexCreationContext, ArticleIndexCreationRequest>();
 		ArticleIndexCreationContext ctxt = new ArticleIndexCreationContext();
 		try {

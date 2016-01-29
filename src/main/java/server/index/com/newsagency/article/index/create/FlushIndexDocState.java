@@ -29,7 +29,7 @@ public class FlushIndexDocState implements WorkflowState<ArticleIndexCreationCon
 		CloudSolrClient client = ctxt.getClient();
 		SolrInputDocument document = ctxt.getDocument();
 		try {
-			client.setDefaultCollection("articlecoll");
+			client.setDefaultCollection(request.getDefaultCollection());
 			client.add(document);
 			client.commit();
 		} catch (SolrServerException e) {

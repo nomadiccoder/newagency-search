@@ -7,6 +7,7 @@ import java.util.List;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -32,15 +33,18 @@ public class ArticleSearchController extends DefaultController {
 
 	private static final Logger logger = LoggerFactory.getLogger(ArticleSearchController.class);
 
+	@Value("defaultcollection")
+	private String defaultCollection;
+	
 	@RequestMapping(value = ArticleSearchURIConstants.SEARCH_ARTICLE, method = RequestMethod.GET)
 	public @ResponseBody ArticleSearchResponseWrapper search(@PathVariable("query") String queryString) {
 		logger.info("Executing search for query " + queryString);
-		List<String> str = null;
 		WorkFlowEngine<ArticleSearchContext, ArticleSearchRequest> engine = new WorkFlowEngine<ArticleSearchContext, ArticleSearchRequest>();
 		ArticleSearchResponseWrapper wrapper = null;
 		ArticleSearchExecutionContext ctxt = new ArticleSearchExecutionContext();
 		ArticleSearchExecutionRequest request = new ArticleSearchExecutionRequest();
 		request.setQueryString(queryString);
+		request.setDefaultCollection(defaultCollection);
 		try {
 			engine.initialize(ctxt);
 			engine.executeState(ctxt, request);

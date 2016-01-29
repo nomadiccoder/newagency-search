@@ -12,6 +12,8 @@ import com.newsagency.search.workflow.WorkflowRequest;
 public class ArticleSearchRequest implements WorkflowRequest {
 	
 	private String queryString;
+	
+	private String defaultCollection;
 
 	public String getQueryString() {
 		return queryString;
@@ -19,6 +21,14 @@ public class ArticleSearchRequest implements WorkflowRequest {
 
 	public void setQueryString(String queryString) {
 		this.queryString = queryString;
+	}
+
+	public String getDefaultCollection() {
+		return defaultCollection;
+	}
+
+	public void setDefaultCollection(String defaultCollection) {
+		this.defaultCollection = defaultCollection;
 	}
 
 }

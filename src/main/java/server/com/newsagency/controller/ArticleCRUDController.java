@@ -3,10 +3,12 @@
  */
 package com.newsagency.controller;
 
+import java.io.IOException;
 import java.util.List;
 
 import javax.transaction.Transactional;
 
+import org.noggit.JSONParser;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
@@ -16,6 +18,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.newsagency.article.db.create.ArticleDBEntityCreationContext;
+import com.newsagency.article.db.create.ArticleDBEntityCreationRequest;
 import com.newsagency.article.db.read.ArticleDBEntityFetchContext;
 import com.newsagency.article.db.read.ArticleDBEntityFetchRequest;
 import com.newsagency.model.Article;
@@ -65,9 +70,29 @@ public class ArticleCRUDController extends DefaultController {
 	}
 
 	@RequestMapping(value = ArticleCRUDRestURIConstants.CREATE_ARTICLE, method = RequestMethod.POST)
-	public @ResponseBody Article createArticle(@RequestBody Article article) {
-		logger.info("create article");
-		return null;
+	public @ResponseBody Article createArticle(@RequestBody String article) {
+		ObjectMapper objectMapper = new ObjectMapper();
+		Article articleObj = null;
+		try {
+			 articleObj = objectMapper.readValue(article, Article.class);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		ArticleDBEntityCreationContext ctxt = new ArticleDBEntityCreationContext();
+		ArticleDBEntityCreationRequest request = new ArticleDBEntityCreationRequest();
+		ctxt.setSpringContext(context);
+		WorkFlowEngine<WorkflowContext, WorkflowRequest> engine = new WorkFlowEngine<WorkflowContext, WorkflowRequest>();
+		request.setArticle(articleObj);
+		try {
+			engine.initialize(ctxt);;
+			engine.executeState(ctxt, request);
+		} catch (StateExecutionException e) {
+			e.printStackTrace();
+		} catch (WorkflowInitializationException e) {
+			e.printStackTrace();
+		}
+		Article savedArticle = new Article();
+		return savedArticle;
 	}
 
 	@RequestMapping(value = ArticleCRUDRestURIConstants.UPDATE_ARTICLE, method = RequestMethod.POST)

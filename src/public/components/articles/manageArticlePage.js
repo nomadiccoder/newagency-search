@@ -50,16 +50,16 @@ var ManageArticlePage = React.createClass({
 		}
 
 
-		// if(this.state.article.author.length <5){
-		// 	formIsValid = false;
-		// 	this.state.errors.author="Author must be atleast 5 characters";
-		// }
+		if(this.state.article.author.length <5){
+			formIsValid = false;
+			this.state.errors.author="Author must be atleast 5 characters";
+		}
 
 
-		// if(this.state.article.directURL.length <20){
-		// 	formIsValid = false;
-		// 	this.state.errors.directURL="Content must be atleast 20 characters";
-		// }
+		if(this.state.article.directURL.length <20){
+			formIsValid = false;
+			this.state.errors.directURL="url must be atleast 20 characters";
+		}
 
 		this.setState({errors:this.state.errors});
 		return true;

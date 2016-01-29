@@ -26,6 +26,10 @@ var ArticleList = React.createClass({
 		toastr.success('Article index');
 	},
 
+	parseDate(timestamp){
+		return new Date(timestamp);
+	},
+
 	render(){
 		function createArticleRow(article){
 			return(
@@ -34,10 +38,10 @@ var ArticleList = React.createClass({
 					<td><a href="#" onClick={this.indexArticle.bind(this,article.id)}>Index</a></td>
 					<td><Link to="manageArticle" params={{articleId:article.id}}>{article.title}</Link></td>
 					<td>{article.author}</td>
-					<td>{article.description}</td>
+					<td>{article.content}</td>
 					<td>{article.publicationDate}</td>
 					<td>{article.category}</td>
-					<td><a href={article.fullContentUri} target="_blank">{article.fullContentUri}</a></td>
+					<td><a href={article.directUrl} target="_blank">{article.directUrl}</a></td>
 				</tr>
 			);
 		}

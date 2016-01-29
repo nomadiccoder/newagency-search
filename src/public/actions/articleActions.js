@@ -14,8 +14,8 @@ var ArticleActions = {
 			Article: newArticle
 		});
 	},
-	updateArticle(article){
-		var updatedArticle = ArticleApi.saveArticle(article);
+	updateArticle(article,id){
+		var updatedArticle = ArticleApi.updateArticle(article,id);
 
 		Dispatcher.dispatch({
 			actionType: ActionTypes.UPDATE_ARTICLE,

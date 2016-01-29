@@ -62,6 +62,7 @@ public class ArticleSearchResponseParseState
 					fieldValue = solrDocument.getFieldValue(field.getFieldName());
 					response.setTitle(fieldValue == null?null:fieldValue.toString());
 					break;
+					
 				case URL:
 					fieldValue = solrDocument.getFieldValue(field.getFieldName());
 					response.setDirectUrl(fieldValue == null?null:fieldValue.toString());
@@ -72,6 +73,7 @@ public class ArticleSearchResponseParseState
 			}
 			responses.add(response);
 		}
+		logger.info("queryResponse : "+queryResponse);
 		logger.info("Result Count" + responses.size());
 		body.setResponses(responses);
 		ArticleSearchResponseWrapper responseWrapper = new ArticleSearchResponseWrapper();

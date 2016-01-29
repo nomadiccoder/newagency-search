@@ -13,6 +13,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.junit.Ignore;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 /**
  * @author bikash
  *
@@ -25,6 +30,7 @@ public class Article implements Serializable {
 	private String title;
 
 	@Column(name="content")
+	@JsonProperty("content")
 	private String description;
 
 	@Column(name="author")
@@ -33,6 +39,7 @@ public class Article implements Serializable {
 	@Column(name="linkUri")
 	private String linkUri;
 	
+	@JsonProperty("directUrl")
 	@Column(name="fullContentUri")
 	private String fullContentUri;
 	

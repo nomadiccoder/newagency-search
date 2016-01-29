@@ -2,6 +2,7 @@
 
 var React = require('react');
 var TextInput = require('../common/textInput');
+var TextAreaInput = require('../common/textAreaInput');
 
 var ArticleForm = React.createClass({
 	propType:{
@@ -22,12 +23,28 @@ var ArticleForm = React.createClass({
 						onChange={this.props.onChange}
 						error={this.props.errors.title}/>
 					<br />
-					<TextInput
+					<TextAreaInput
 						name="content"
 						label="Content"
-						value={this.props.article.content}
+						value={this.props.article.description}
 						onChange={this.props.onChange}
-						error={this.props.errors.content}/>
+						error={this.props.errors.description}/>
+					<br />
+
+					<TextInput
+						name="author"
+						label="Author"
+						value={this.props.article.author}
+						onChange={this.props.onChange}
+						error={this.props.errors.author}/>
+					<br />
+
+					<TextInput
+						name="directUrl"
+						label="url"
+						value={this.props.article.fullContentUri}
+						onChange={this.props.onChange}
+						error={this.props.errors.fullContentUri}/>
 					<br />
 
 					<input type="submit" value="Save" className="btn btn-default" onClick={this.props.onSave}/>

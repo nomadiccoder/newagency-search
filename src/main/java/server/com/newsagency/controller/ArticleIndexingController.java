@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.newsagency.article.index.common.ArticleIndexCRUDContext;
 import com.newsagency.article.index.common.ArticleIndexCRUDRequest;
@@ -36,6 +37,7 @@ public class ArticleIndexingController extends DefaultController {
 	private String zkHost;
 	
 	@RequestMapping(value = ArticleIndexingURIConstants.INDEX_CREATE_ARTICLE, method = RequestMethod.POST)
+	@ResponseBody
 	public void createIndexByArticleId(@PathVariable("id") long articleId) {
 		logger.info("Received create index request for article :: " + articleId);
 		ArticleIndexCRUDRequest creationRequest = new ArticleIndexCreationRequest();
@@ -52,7 +54,7 @@ public class ArticleIndexingController extends DefaultController {
 			e.printStackTrace();
 		} catch (WorkflowInitializationException e) {
 			e.printStackTrace();
-		}	
+		}
 	}
 
 	@RequestMapping(value = ArticleIndexingURIConstants.INDEX_BULK_ARTICLES, method = RequestMethod.POST)

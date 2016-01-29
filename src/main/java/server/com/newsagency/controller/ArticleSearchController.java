@@ -3,8 +3,6 @@
  */
 package com.newsagency.controller;
 
-import java.util.List;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
@@ -36,7 +34,7 @@ public class ArticleSearchController extends DefaultController {
 	@Value("${defaultcollection}")
 	private String defaultCollection;
 	
-	@Value("{solr.zkhost}")
+	@Value("${solr.zkhost}")
 	private String zkHost;
 	
 	@RequestMapping(value = ArticleSearchURIConstants.SEARCH_ARTICLE, method = RequestMethod.GET)

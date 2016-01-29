@@ -9,7 +9,7 @@ package com.newsagency.article.search.common;
  */
 public enum ResponseFields {
 
-	AUTHOR("author"), TITLE("title"), DESCRIPTION("description"), URL("directUrl");
+	AUTHOR("author"), TITLE("title"), DESCRIPTION("description"), URL("fullContentUri");
 
 	private String fieldName;
 

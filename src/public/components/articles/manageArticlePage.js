@@ -15,7 +15,7 @@ var ManageArticlePage = React.createClass({
 
 	getInitialState(){
 		return{
-			article:{id:'',title:'',content:''},
+			article:{id:"",title:"",content:""},
 			errors:{},
 			dirty:false
 		};
@@ -39,18 +39,30 @@ var ManageArticlePage = React.createClass({
 	articleFormIsValid(){
 		var formIsValid = true;
 		this.state.errors = {}; //Clear any previous errors
-		if(this.state.article.title.length <3){
+		if(this.state.article.title.length <10){
 			formIsValid = false;
-			this.state.errors.title="First Name must be atleast 3 characters";
+			this.state.errors.title="Title must be atlease 10 characters";
 		}
 
-		if(this.state.article.content.length <3){
+		if(this.state.article.content.length <20){
 			formIsValid = false;
-			this.state.errors.content="Last Name must be atleast 3 characters";
+			this.state.errors.content="Content must be atleast 20 characters";
 		}
+
+
+		// if(this.state.article.author.length <5){
+		// 	formIsValid = false;
+		// 	this.state.errors.author="Author must be atleast 5 characters";
+		// }
+
+
+		// if(this.state.article.directURL.length <20){
+		// 	formIsValid = false;
+		// 	this.state.errors.directURL="Content must be atleast 20 characters";
+		// }
 
 		this.setState({errors:this.state.errors});
-		return formIsValid;
+		return true;
 	},
 
 	saveArticle(event){
@@ -59,7 +71,7 @@ var ManageArticlePage = React.createClass({
 			return;
 		}
 		if(this.state.article.id){
-			ArticleActions.updateArticle(this.state.article);
+			ArticleActions.updateArticle(this.state.article,this.state.article.id);
 		}else{
 			ArticleActions.createArticle(this.state.article);
 		}

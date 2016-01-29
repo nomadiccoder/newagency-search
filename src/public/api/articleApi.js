@@ -55,30 +55,52 @@ var ArticleApi = {
 			url: articleIndexingUrl,
 			dataType: 'json',
 			cache: false,
-			success: function(data){
-
+			success: function(data){	
+				console.log("indexing successfully")
 			},
 			error:function(xhr,status,err){
-
+				console.log("indexing failed");
 			}
 		});
 	},
 	
 	saveArticle: function(article) {
 		//pretend an ajax call to web api is made here
-		console.log('Pretend this just saved the article to the DB via AJAX call...');
-		
-		if (article.id) {
-			var existingArticleIndex = _.indexOf(articles, _.find(articles, {id: article.id})); 
-			articles.splice(existingArticleIndex, 1, article);
-		} else {
-			//Just simulating creation here.
-			//The server would generate ids for new article in a real app.
-			//Cloning so copy returned is passed by value rather than by reference.
-			article.id = _generateId(article);
-			articles.push(article);
-		}
+		console.log('Creating a new article');
+		var artStr = JSON.stringify(article);
+		$.ajax({
+			url:RestConfig.ARTICLE_CREATE_URL,
+			type:"POST",
+			dataType:'json',
+			cache:false,
+			data:artStr,
+			contentType:"application/json; charset=UTF-8",
+			success:function(data){
+				console.log("successfully created article");
+			},
+			error:function(xhr,status,err){
 
+			}
+		});		
+		return _clone(article);
+	},
+
+	updateArticle: function(article) {
+		//pretend an ajax call to web api is made here
+		console.log('Creating a new article');
+		$.ajax({
+			url:RestConfig.ARTICLE_UPDATE_URL,
+			type:"POST",
+			dataType:'json',
+			cache:false,
+			data:article,
+			success:function(data){
+				console.log("successfully created article");
+			},
+			error:function(xhr,status,err){
+
+			}
+		});		
 		return _clone(article);
 	},
 

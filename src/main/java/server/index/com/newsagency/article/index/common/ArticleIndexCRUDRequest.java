@@ -13,8 +13,6 @@ public class ArticleIndexCRUDRequest implements WorkflowRequest {
 	
 	private Long articleId;
 	
-	private String defaultCollection;
-
 	public Long getArticleId() {
 		return articleId;
 	}
@@ -22,6 +20,8 @@ public class ArticleIndexCRUDRequest implements WorkflowRequest {
 	public void setArticleId(Long articleId) {
 		this.articleId = articleId;
 	}
+	
+	private String defaultCollection;
 
 	public String getDefaultCollection() {
 		return defaultCollection;
@@ -30,6 +30,5 @@ public class ArticleIndexCRUDRequest implements WorkflowRequest {
 	public void setDefaultCollection(String defaultCollection) {
 		this.defaultCollection = defaultCollection;
 	}
-
 
 }

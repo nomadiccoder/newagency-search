@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.newsagency.article.index.common.ArticleIndexCRUDContext;
+import com.newsagency.article.index.common.ArticleIndexCRUDRequest;
 import com.newsagency.article.index.create.ArticleIndexCreationContext;
 import com.newsagency.article.index.create.ArticleIndexCreationRequest;
 import com.newsagency.search.workflow.WorkFlowEngine;
@@ -27,17 +29,21 @@ public class ArticleIndexingController extends DefaultController {
 
 	private static final Logger logger = LoggerFactory.getLogger(ArticleIndexingController.class);
 	
-	@Value("defaultcollection")
+	@Value("${defaultcollection}")
 	private String defaultCollection;
-
+	
+	@Value("${solr.zkhost}")
+	private String zkHost;
+	
 	@RequestMapping(value = ArticleIndexingURIConstants.INDEX_CREATE_ARTICLE, method = RequestMethod.POST)
 	public void createIndexByArticleId(@PathVariable("id") long articleId) {
 		logger.info("Received create index request for article :: " + articleId);
-		ArticleIndexCreationRequest creationRequest = new ArticleIndexCreationRequest();
+		ArticleIndexCRUDRequest creationRequest = new ArticleIndexCreationRequest();
+		ArticleIndexCRUDContext ctxt = new ArticleIndexCreationContext();
 		creationRequest.setArticleId(articleId);
 		creationRequest.setDefaultCollection(defaultCollection);
-		WorkFlowEngine<ArticleIndexCreationContext, ArticleIndexCreationRequest> engine = new WorkFlowEngine<ArticleIndexCreationContext, ArticleIndexCreationRequest>();
-		ArticleIndexCreationContext ctxt = new ArticleIndexCreationContext();
+		ctxt.setZkHost(zkHost);
+		WorkFlowEngine<ArticleIndexCRUDContext, ArticleIndexCRUDRequest> engine = new WorkFlowEngine<ArticleIndexCRUDContext, ArticleIndexCRUDRequest>();
 		try {
 			ctxt.setSpringContext(context);
 			engine.initialize(ctxt);

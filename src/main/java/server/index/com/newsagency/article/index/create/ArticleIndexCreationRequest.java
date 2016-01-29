@@ -17,4 +17,5 @@ import com.newsagency.search.workflow.States;
 		FlushIndexDocState.class, IndexerFinalizationState.class })
 public class ArticleIndexCreationRequest extends ArticleIndexCRUDRequest {
 	
+	
 }

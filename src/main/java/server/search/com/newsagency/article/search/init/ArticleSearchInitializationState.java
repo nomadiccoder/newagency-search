@@ -26,7 +26,7 @@ public class ArticleSearchInitializationState implements WorkflowState<ArticleSe
 	public void execute(ArticleSearchContext ctxt, ArticleSearchRequest request)
 			throws WorkflowExecutionException {
 		logger.info("Executing state");
-		CloudSolrClient client = new CloudSolrClient("localhost:2181");
+		CloudSolrClient client = new CloudSolrClient(ctxt.getZkHost());
 		client.setDefaultCollection(request.getDefaultCollection());
 		ctxt.setClient(client);
 	}

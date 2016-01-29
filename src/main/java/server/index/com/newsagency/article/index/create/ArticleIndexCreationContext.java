@@ -43,4 +43,5 @@ public class ArticleIndexCreationContext extends ArticleIndexCRUDContext {
 	public void setSpringContext(ClassPathXmlApplicationContext springContext) {
 		this.springContext = springContext;
 	}
+
 }

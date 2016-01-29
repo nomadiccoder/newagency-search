@@ -297,6 +297,7 @@
 						</configuration>
 					</execution>
 					<execution>
+						<phase>install</phase>
 						<id>gulp build</id>
 						<goals>
 							<goal>gulp</goal>

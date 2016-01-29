@@ -7,7 +7,6 @@ import org.apache.solr.client.solrj.impl.CloudSolrClient;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.newsagency.article.index.create.IndexDocCreationState;
 import com.newsagency.search.workflow.WorkflowState;
 import com.newsagency.search.workflow.exception.WorkflowExecutionException;
 
@@ -23,7 +22,8 @@ public class IndexerInitializationState implements WorkflowState<ArticleIndexCRU
 	public void execute(ArticleIndexCRUDContext ctxt, ArticleIndexCRUDRequest request)
 			throws WorkflowExecutionException {
 		logger.info("Executing state");
-		CloudSolrClient client = new CloudSolrClient("localhost:2181");
+		CloudSolrClient client = new CloudSolrClient(ctxt.getZkHost());
+		client.setDefaultCollection(request.getDefaultCollection());
 		ctxt.setClient(client);
 	}
 

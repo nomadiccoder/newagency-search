@@ -34,6 +34,8 @@ public class ArticleSearchContext implements WorkflowContext{
 	private QueryResponse searchResponse;
 	
 	private ArticleSearchResponseWrapper wrapper;
+	
+	private String zkHost;
 
 	public CloudSolrClient getClient() {
 		return client;
@@ -65,6 +67,14 @@ public class ArticleSearchContext implements WorkflowContext{
 
 	public void setWrapper(ArticleSearchResponseWrapper wrapper) {
 		this.wrapper = wrapper;
+	}
+
+	public String getZkHost() {
+		return zkHost;
+	}
+
+	public void setZkHost(String zkHost) {
+		this.zkHost = zkHost;
 	}
 
 }

@@ -33,18 +33,22 @@ public class ArticleSearchController extends DefaultController {
 
 	private static final Logger logger = LoggerFactory.getLogger(ArticleSearchController.class);
 
-	@Value("defaultcollection")
+	@Value("${defaultcollection}")
 	private String defaultCollection;
+	
+	@Value("{solr.zkhost}")
+	private String zkHost;
 	
 	@RequestMapping(value = ArticleSearchURIConstants.SEARCH_ARTICLE, method = RequestMethod.GET)
 	public @ResponseBody ArticleSearchResponseWrapper search(@PathVariable("query") String queryString) {
 		logger.info("Executing search for query " + queryString);
+		ArticleSearchContext ctxt = new ArticleSearchExecutionContext();
+		ArticleSearchRequest request = new ArticleSearchExecutionRequest();
 		WorkFlowEngine<ArticleSearchContext, ArticleSearchRequest> engine = new WorkFlowEngine<ArticleSearchContext, ArticleSearchRequest>();
 		ArticleSearchResponseWrapper wrapper = null;
-		ArticleSearchExecutionContext ctxt = new ArticleSearchExecutionContext();
-		ArticleSearchExecutionRequest request = new ArticleSearchExecutionRequest();
 		request.setQueryString(queryString);
 		request.setDefaultCollection(defaultCollection);
+		ctxt.setZkHost(zkHost);
 		try {
 			engine.initialize(ctxt);
 			engine.executeState(ctxt, request);

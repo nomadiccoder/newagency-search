@@ -21,6 +21,8 @@ public class ArticleIndexCRUDContext implements WorkflowContext {
 	private CloudSolrClient client;
 	
 	private ClassPathXmlApplicationContext springContext;
+	
+	private String zkHost;
 	/*
 	 * (non-Javadoc)
 	 * 
@@ -69,6 +71,14 @@ public class ArticleIndexCRUDContext implements WorkflowContext {
 
 	public void setSpringContext(ClassPathXmlApplicationContext springContext) {
 		this.springContext = springContext;
+	}
+
+	public String getZkHost() {
+		return zkHost;
+	}
+
+	public void setZkHost(String zkHost) {
+		this.zkHost = zkHost;
 	}
 	
 

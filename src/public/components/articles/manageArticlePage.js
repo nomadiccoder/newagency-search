@@ -56,7 +56,7 @@ var ManageArticlePage = React.createClass({
 		}
 
 
-		if(this.state.article.directURL.length <20){
+		if(this.state.article.directUrl.length <20){
 			formIsValid = false;
 			this.state.errors.directURL="url must be atleast 20 characters";
 		}
